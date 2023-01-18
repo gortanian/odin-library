@@ -1,5 +1,7 @@
 // TODO
-// - change displayLibrary to put the book info into a div with the class "book"
+// - add a new book button and form
+// - add remove book buttons
+// - add buttons to change read status
 
 // Library initialization
 let myLibrary = [];
@@ -27,12 +29,8 @@ function addBookToLibrary(title, author, pages, read) {
 // display library function
 function displayLibrary() {
   myLibrary.forEach(function (book) {
-    // temporarily, just print the books to the console.
-    console.log(book.info());
-
-    // put the book info into a div with the class "book"
     const htmlBook = `
-    <div>
+    <div class="book">
       <h2>${book.title}</h2>
       <h3>by ${book.author}</h3>
       <div>${book.pages} pages</div>
