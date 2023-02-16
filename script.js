@@ -26,6 +26,12 @@ function addBookToLibrary(title, author, pages, read) {
   myLibrary.push(new Book(title, author, pages, read));
 }
 
+// Display form when 'new book' button is pressed
+const newBookButton = document.querySelector('.new-book');
+console.log(newBookButton);
+
+newBookButton.addEventListener("click", () => console.log("hi"));
+
 // display library function
 function displayLibrary() {
   myLibrary.forEach(function (book) {
@@ -37,7 +43,7 @@ function displayLibrary() {
       <div>${book.read ? "Already read" : "Not read yet"}</div>
     </div>`;
 
-    document.body.innerHTML += htmlBook;
+    document.querySelector(".book-container").innerHTML += htmlBook;
   });
 }
 
