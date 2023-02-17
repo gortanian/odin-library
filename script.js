@@ -16,9 +16,8 @@ function Book(title, author, pages, read) {
 
 // add the info function to Book object prototype
 Book.prototype.info = function () {
-  return `${this.title} by ${this.author}, ${this.pages} pages, ${
-    this.read === true ? "already read" : "not read yet"
-  }`;
+  return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read === true ? "already read" : "not read yet"
+    }`;
 };
 
 // Adds book to myLibrary
@@ -30,7 +29,25 @@ function addBookToLibrary(title, author, pages, read) {
 const newBookButton = document.querySelector('.new-book');
 console.log(newBookButton);
 
-newBookButton.addEventListener("click", () => console.log("hi"));
+newBookButton.addEventListener("click", displayForm);
+
+function displayForm() {
+  let form = `
+  <form>
+    <label for="title">Book Title:</label>
+    <input type="text" id="title" name="title">
+    <label for="author">Author:</label>
+    <input type="text" id="author" name="author">
+    <label for="pages">Pages:</label>
+    <input type="number" id="pages" name="pages">
+    <label for="read">Already read:</label>
+    <input type="checkbox" id="read" name="read">
+    <input type="submit">
+  </form>`;
+
+  document.querySelector(".form-container").innerHTML = form;
+  console.log("displayForm has been run");
+}
 
 // display library function
 function displayLibrary() {
