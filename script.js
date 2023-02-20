@@ -32,10 +32,9 @@ newBookButton.addEventListener("click", displayForm);
 function displayForm() {
   document.querySelector(".form-container").style.display = "block";
 }
-
-// add a book to the library when the new book form is submitted. 
-// Use event.preventDefault(); 
-// might have to show and hide the form instead of adding it with js. 
+// TODO: 
+// handle missing inputs
+// handle duplicate books (shouldn't have same book listed twice in the library)
 const newBookForm = document.querySelector("form");
 
 newBookForm.addEventListener("submit", function(e) {
