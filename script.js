@@ -27,8 +27,6 @@ function addBookToLibrary(title, author, pages, read) {
 
 // Display form when 'new book' button is pressed
 const newBookButton = document.querySelector('.new-book');
-console.log(newBookButton);
-
 newBookButton.addEventListener("click", displayForm);
 
 function displayForm() {
@@ -38,10 +36,27 @@ function displayForm() {
 // add a book to the library when the new book form is submitted. 
 // Use event.preventDefault(); 
 // might have to show and hide the form instead of adding it with js. 
+const newBookForm = document.querySelector("form");
+
+newBookForm.addEventListener("submit", function(e) {
+  
+  let title = e.target.elements['title'].value;
+  let author = e.target.elements['author'].value;
+  let pages = e.target.elements['pages'].value;
+  let read = e.target.elements['read'].checked; 
+  console.log(read);
+  addBookToLibrary(title, author, pages, read);
+  displayLibrary();
+  e.preventDefault();
+});
 
 
 // display library function
 function displayLibrary() {
+  
+  // clear the previously displayed library first
+  document.querySelector(".book-container").innerHTML = '';
+
   myLibrary.forEach(function (book) {
     const htmlBook = `
     <div class="book">
