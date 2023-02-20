@@ -11,7 +11,19 @@
   <body>
     <h1>Library</h1>
     <button class="new-book">New Book</button>
-    <div class="form-container"></div>
+    <div class="form-container" style="display: none">
+      <form>
+        <label for="title">Book Title:</label>
+        <input type="text" id="title" name="title">
+        <label for="author">Author:</label>
+        <input type="text" id="author" name="author">
+        <label for="pages">Pages:</label>
+        <input type="number" id="pages" name="pages">
+        <label for="read">Already read:</label>
+        <input type="checkbox" id="read" name="read">
+        <input type="submit">
+      </form>`
+    </div>
     <div class="book-container"></div>
   </body>
 </html>

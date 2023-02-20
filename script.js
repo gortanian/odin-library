@@ -32,22 +32,13 @@ console.log(newBookButton);
 newBookButton.addEventListener("click", displayForm);
 
 function displayForm() {
-  let form = `
-  <form>
-    <label for="title">Book Title:</label>
-    <input type="text" id="title" name="title">
-    <label for="author">Author:</label>
-    <input type="text" id="author" name="author">
-    <label for="pages">Pages:</label>
-    <input type="number" id="pages" name="pages">
-    <label for="read">Already read:</label>
-    <input type="checkbox" id="read" name="read">
-    <input type="submit">
-  </form>`;
-
-  document.querySelector(".form-container").innerHTML = form;
-  console.log("displayForm has been run");
+  document.querySelector(".form-container").style.display = "block";
 }
+
+// add a book to the library when the new book form is submitted. 
+// Use event.preventDefault(); 
+// might have to show and hide the form instead of adding it with js. 
+
 
 // display library function
 function displayLibrary() {
