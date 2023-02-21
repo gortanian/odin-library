@@ -1,5 +1,4 @@
 // TODO
-// - add a new book button and form
 // - add remove book buttons
 // - add buttons to change read status
 
@@ -16,8 +15,9 @@ function Book(title, author, pages, read) {
 
 // add the info function to Book object prototype
 Book.prototype.info = function () {
-  return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read === true ? "already read" : "not read yet"
-    }`;
+  return `${this.title} by ${this.author}, ${this.pages} pages, ${
+    this.read === true ? "already read" : "not read yet"
+  }`;
 };
 
 // Adds book to myLibrary
@@ -26,35 +26,33 @@ function addBookToLibrary(title, author, pages, read) {
 }
 
 // Display form when 'new book' button is pressed
-const newBookButton = document.querySelector('.new-book');
+const newBookButton = document.querySelector(".new-book");
 newBookButton.addEventListener("click", displayForm);
 
 function displayForm() {
   document.querySelector(".form-container").style.display = "block";
 }
-// TODO: 
+// TODO:
 // handle missing inputs
 // handle duplicate books (shouldn't have same book listed twice in the library)
+// make form disappear after submitting
 const newBookForm = document.querySelector("form");
 
-newBookForm.addEventListener("submit", function(e) {
-  
-  let title = e.target.elements['title'].value;
-  let author = e.target.elements['author'].value;
-  let pages = e.target.elements['pages'].value;
-  let read = e.target.elements['read'].checked; 
+newBookForm.addEventListener("submit", function (e) {
+  let title = e.target.elements["title"].value;
+  let author = e.target.elements["author"].value;
+  let pages = e.target.elements["pages"].value;
+  let read = e.target.elements["read"].checked;
   console.log(read);
   addBookToLibrary(title, author, pages, read);
   displayLibrary();
   e.preventDefault();
 });
 
-
 // display library function
 function displayLibrary() {
-  
   // clear the previously displayed library first
-  document.querySelector(".book-container").innerHTML = '';
+  document.querySelector(".book-container").innerHTML = "";
 
   myLibrary.forEach(function (book) {
     const htmlBook = `
@@ -63,6 +61,7 @@ function displayLibrary() {
       <h3>by ${book.author}</h3>
       <div>${book.pages} pages</div>
       <div>${book.read ? "Already read" : "Not read yet"}</div>
+      <button>Remove</button>
     </div>`;
 
     document.querySelector(".book-container").innerHTML += htmlBook;
