@@ -29,7 +29,10 @@ function addBookToLibrary(title, author, pages, read) {
 
 // Removes book from library
 function removeBookFromLibrary(target) {
-  //TODO
+  console.log("removeBookfromLibrary is running");
+  let libraryIndex = target.id.slice('remove-index'.length);
+  myLibrary.splice(libraryIndex, 1);
+  displayLibrary();
 }
 
 // Display form when 'new book' button is pressed
@@ -79,7 +82,9 @@ function displayLibrary() {
 // add event listeners to remove buttons
 function addRemoveButtonListeners() {
   let removalButtons = document.querySelectorAll("button.remove");
-  console.log(removalButtons);
+  removalButtons.forEach(function (button) {
+    button.addEventListener("click", () => removeBookFromLibrary(button));
+  })
 }
 
 // Manually enter a few books
@@ -88,4 +93,3 @@ addBookToLibrary("The Hunger Games", "Suzanne Collins", 384, false);
 addBookToLibrary("The Three-Body Problem", "Liu Cixin", 416, false);
 
 displayLibrary();
-addRemoveButtonListeners();
