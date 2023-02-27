@@ -33,7 +33,6 @@ function removeBookFromLibrary(target) {
 
 // changes read status of book in library
 function changeReadStatus(target) {
-  console.log("changeReadStatus is running");
   let libraryIndex = target.id.slice('read-status-index'.length);
   myLibrary[libraryIndex].read = !myLibrary[libraryIndex].read;
   displayLibrary();
@@ -50,7 +49,6 @@ function displayForm() {
 // TODO:
 // handle missing inputs
 // handle duplicate books (shouldn't have same book listed twice in the library)
-// make form disappear after submitting
 const newBookForm = document.querySelector("form");
 
 newBookForm.addEventListener("submit", function (e) {
@@ -61,6 +59,7 @@ newBookForm.addEventListener("submit", function (e) {
   addBookToLibrary(title, author, pages, read);
   displayLibrary();
   e.preventDefault();
+  document.querySelector(".form-container").style.display = "none";
 });
 
 // display library function
