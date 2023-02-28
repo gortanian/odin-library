@@ -1,5 +1,6 @@
 // TODO
-// - add buttons to change read status
+// handle missing inputs in new book form
+// handle duplicate books (shouldn't have same book listed twice in the library)
 
 // Library initialization
 let myLibrary = [];
