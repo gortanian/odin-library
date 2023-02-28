@@ -1,7 +1,3 @@
-// TODO
-// handle missing inputs in new book form
-// handle duplicate books (shouldn't have same book listed twice in the library)
-
 // Library initialization
 let myLibrary = [];
 
@@ -48,19 +44,30 @@ function displayForm() {
 }
 
 // TODO:
-// handle missing inputs
-// handle duplicate books (shouldn't have same book listed twice in the library)
 const newBookForm = document.querySelector("form");
 
 newBookForm.addEventListener("submit", function (e) {
+  e.preventDefault();
   let title = e.target.elements["title"].value;
   let author = e.target.elements["author"].value;
   let pages = e.target.elements["pages"].value;
   let read = e.target.elements["read"].checked;
-  addBookToLibrary(title, author, pages, read);
-  displayLibrary();
-  e.preventDefault();
-  document.querySelector(".form-container").style.display = "none";
+
+  // prevent duplicate books
+  let bookInLibrary = false;
+  myLibrary.forEach(function (book) {
+    if (book.title === title && book.author === author) {
+      bookInLibrary = true;
+    }
+  });
+  if (bookInLibrary) {
+    document.querySelector(".error-message").style.display = "block";
+  } else {
+    addBookToLibrary(title, author, pages, read);
+    displayLibrary();
+    document.querySelector(".error-message").style.display = "none";
+    document.querySelector(".form-container").style.display = "none";
+  }
 });
 
 // display library function
@@ -113,3 +120,5 @@ addBookToLibrary("The Hunger Games", "Suzanne Collins", 384, false);
 addBookToLibrary("The Three-Body Problem", "Liu Cixin", 416, false);
 
 displayLibrary();
+
+myLibrary.forEach((book) => console.log(book.title));
