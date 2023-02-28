@@ -27,14 +27,14 @@ function addBookToLibrary(title, author, pages, read) {
 
 // Removes book from library
 function removeBookFromLibrary(target) {
-  let libraryIndex = target.id.slice('remove-index'.length);
+  let libraryIndex = target.id.slice("remove-index".length);
   myLibrary.splice(libraryIndex, 1);
   displayLibrary();
 }
 
 // changes read status of book in library
 function changeReadStatus(target) {
-  let libraryIndex = target.id.slice('read-status-index'.length);
+  let libraryIndex = target.id.slice("read-status-index".length);
   myLibrary[libraryIndex].read = !myLibrary[libraryIndex].read;
   displayLibrary();
 }
@@ -75,8 +75,12 @@ function displayLibrary() {
       <h3>by ${book.author}</h3>
       <div>${book.pages} pages</div>
       <div>${book.read ? "Already read" : "Not read yet"}</div>
-      <button class="change-read-status" id="read-status-index${myLibrary.indexOf(book)}">Change read status</button>
-      <button class="remove" id="remove-index${myLibrary.indexOf(book)}">Remove</button>
+      <button class="change-read-status" id="read-status-index${myLibrary.indexOf(
+        book
+      )}">Change read status</button>
+      <button class="remove" id="remove-index${myLibrary.indexOf(
+        book
+      )}">Remove</button>
     </div>`;
 
     document.querySelector(".book-container").innerHTML += htmlBook;
@@ -90,16 +94,17 @@ function addRemoveButtonListeners() {
   let removalButtons = document.querySelectorAll("button.remove");
   removalButtons.forEach(function (button) {
     button.addEventListener("click", () => removeBookFromLibrary(button));
-  })
+  });
 }
 
 // add event listeners to change-read-status buttons
 function addChangeReadButtonListeners() {
-
-  let readStatusButtons = document.querySelectorAll("button.change-read-status");
+  let readStatusButtons = document.querySelectorAll(
+    "button.change-read-status"
+  );
   readStatusButtons.forEach(function (button) {
     button.addEventListener("click", () => changeReadStatus(button));
-  })
+  });
 }
 
 // Manually enter a few books
