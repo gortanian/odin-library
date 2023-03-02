@@ -40,7 +40,11 @@ const newBookButton = document.querySelector(".new-book");
 newBookButton.addEventListener("click", displayForm);
 
 function displayForm() {
-  document.querySelector(".form-container").style.display = "block";
+  if (document.querySelector(".form-container").style.display === "block") {
+    document.querySelector(".form-container").style.display = "none"
+  } else {
+    document.querySelector(".form-container").style.display = "block";
+  }
 }
 
 // TODO:
